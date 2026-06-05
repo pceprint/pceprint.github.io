@@ -31,6 +31,7 @@
     object-fit: contain; 
     border-radius: 12%;
     margin-bottom: 15px;
+    background: white;
     box-shadow: 0 0 15px rgba(255,255,255,0.2);
   }
   h1 {
@@ -60,15 +61,40 @@
     background: #2a2a2a;
     border-color: #00d4ff;
   }
-  .btn img {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-  }
-  .btn span {
-    font-size: 16px;
+
+  }.banco {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    background: #1a1a1a;
+}
+
+.banco img {
+    width: 55px;        
+    height: 55px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.btn {
+    background: white;   
+    color: black;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 20px;
     font-weight: bold;
-  }
+    font-size: 16px;
+    flex: 1;
+    cursor: pointer;
+}
+
+.btn:active {
+    background: #e0e0e0;
+}
   .footer {
     margin-top: 20px;
     font-size: 12px;
@@ -88,25 +114,25 @@
     Cédula: 22301491415
   </div>
 
-  <button class="btn" onclick="copiar('832264482')">
-    <img src="popular.png" alt="Popular">
-    <span>Copiar cuenta</span>
-  </button>
+ <div class="banco">
+  <img src="popular.png" alt="Popular">
+  <button class="btn" onclick="copiar('832264482')">Copiar cuenta</button>
+</div>
 
-  <button class="btn" onclick="copiar('29999070016')">
-    <img src="bhd.png" alt="BHD">
-    <span>Copiar cuenta</span>
-  </button>
+ <div class="banco">
+  <img src="bhd.png" alt="BHD">
+  <button class="btn" onclick="copiar('29999070016')">Copiar cuenta</button>
+</div>
 
-  <button class="btn" onclick="copiar('9603469721')">
-    <img src="banreservas.png" alt="Banreservas">
-    <span>Copiar cuenta</span>
-  </button>
+  <div class="banco">
+  <img src="banreservas.png" alt="Banreservas">
+  <button class="btn" onclick="copiar('9603469721')">Copiar cuenta</button>
+</div>
 
-  <button class="btn" onclick="copiar('1460338193')">
-    <img src="lanacional.png" alt="La Nacional">
-    <span>Copiar cuenta</span>
-  </button>
+  <div class="banco">
+  <img src="lanacional.png" alt="La nacional">
+  <button class="btn" onclick="copiar('1460338193')">Copiar cuenta</button>
+</div>
 
   <div class="footer">Rápido y Seguro con un Toque 🔒</div>
 </div>
