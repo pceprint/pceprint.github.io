@@ -150,7 +150,7 @@
  <div class="banco">
   <img src="bhd.png" alt="BHD">
 <button class="btn" onclick="copiarCuenta('29999070016')">Copiar cuenta</button>
-<button class="btn btn-secondary" onclick="abrirApp('bhd')">Ir a BHD ↗️</button>
+<a href="bhdleonmobile://" class="btn btn-secondary" target="_blank">Ir a BHD ↗️</a>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -176,12 +176,11 @@ function copiarCuenta(cuenta) {
 function abrirApp(banco) {
   let links = {
     'banreservas': 'banreservas://',
-    'bhd': 'bhdleon://',
+    'bhd': 'bhdleonmobile://',
     'lanacional': 'banreservas://'
   };
 
-  // Solo intenta abrir la app. Punto.
-  window.location = links[banco];
+  window.location.href = links[banco];
 }
   
 </script>
