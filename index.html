@@ -150,7 +150,7 @@
  <div class="banco">
   <img src="bhd.png" alt="BHD">
 <button class="btn" onclick="copiarCuenta('29999070016')">Copiar cuenta</button>
-<a href="https://www.bhdleon.com.do/app" class="btn btn-secondary" target="_blank">Ir a BHD ↗️</a>
+<button class="btn btn-secondary" onclick="abrirApp('bhd')">Ir a BHD ↗️</button>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -175,12 +175,13 @@ function copiarCuenta(cuenta) {
 
 function abrirApp(banco) {
   let links = {
-    'banreservas': 'banreservas://',
-    'bhd': 'bhdleonmobile://',
-    'lanacional': 'banreservas://'
+    'banreservas': 'https://banreservas.com.do/app',
+    'bhd': 'https://www.bhdleon.com.do/app',
+    'lanacional': 'https://banreservas.com.do/app' // usa banreservas porque La Nacional no tiene app propia
   };
 
   window.location.href = links[banco];
+}
 }
   
 </script>
