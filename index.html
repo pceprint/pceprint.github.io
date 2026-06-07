@@ -172,22 +172,22 @@ function copiarCuenta(cuenta) {
   navigator.clipboard.writeText(cuenta);
   alert('Cuenta copiada ✅');
 }
-
 function abrirApp(banco) {
   let links = {
     'banreservas': 'banreservas://',
     'bhd': 'bhdleon://',
     'lanacional': 'banreservas://'
   };
-  
-  window.location = links[banco];
-  
+
+  // Truco iframe para iPhone/Android
+  let iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.src = links[banco];
+  document.body.appendChild(iframe);
+
   setTimeout(() => {
-    if(banco == 'banreservas' || banco == 'lanacional') 
-      window.location = 'https://www.banreservas.com';
-    if(banco == 'bhd') 
-      window.location = 'https://www.bhdleon.com.do';
-  }, 1500);
+    document.body.removeChild(iframe);
+  }, 1000);
 }
 </script>
 </body>
