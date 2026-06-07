@@ -142,42 +142,65 @@
   </div>
 
   <p class="tipo-cuenta">Cuentas empresariales</p>
-  <div class="banco">
+  <!-- POPULAR -->
+<div class="banco">
   <img src="popular.png" alt="Popular">
   <button class="btn" onclick="copiar('832264428')">Copiar cuenta</button>
+  <button class="btn btn-secondary" onclick="abrirApp('popular')">Ir a Popular ↗️</button>
 </div>
 
- <div class="banco">
+<!-- BHD -->
+<div class="banco">
   <img src="bhd.png" alt="BHD">
-<button class="btn" onclick="copiarCuenta('29999070016')">Copiar cuenta</button>
-<a href="https://bhdleon.app.link/open" class="btn btn-secondary" target="_blank">Ir a BHD ↗️</a>
+  <button class="btn" onclick="copiar('29999070016')">Copiar cuenta</button>
+  <button class="btn btn-secondary" onclick="abrirApp('bhd')">Ir a BHD ↗️</button>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
-  <div class="banco">
+  <!-- BANRESERVAS -->
+<div class="banco">
   <img src="banreservas.png" alt="Banreservas">
   <button class="btn" onclick="copiar('9603469721')">Copiar cuenta</button>
+  <button class="btn btn-secondary" onclick="abrirApp('banreservas')">Ir a Banreservas ↗️</button>
 </div>
 
-  <div class="banco">
+<!-- LA NACIONAL -->
+<div class="banco">
   <img src="lanacional.png" alt="La nacional">
   <button class="btn" onclick="copiar('1460338193')">Copiar cuenta</button>
+  <button class="btn btn-secondary" onclick="abrirApp('lanacional')">Ir a La Nacional ↗️</button>
 </div>
 
   <div class="footer">Rápido y Seguro con un Toque 🔒</div>
 </div>
 
 <script>
-function copiarCuenta(cuenta) {
-  navigator.clipboard.writeText(cuenta);
-  alert('Cuenta copiada ✅');
+function copiar(texto) {
+  navigator.clipboard.writeText(texto);
+  alert('Cuenta copiada: ' + texto);
 }
 
 function abrirApp(banco) {
-  let links = {
-    'banreservas': 'https://banreservas.com.do/app',
-    'bhd': 'https://www.bhdleon.com.do/app',
-    'lanacional': 'https://banreservas.com.do/app' // usa banreservas porque La Nacional no tiene app propia
+  let apps = {
+    'popular': 'https://www.popularenlinea.com', // Popular no tiene deep link
+    'bhd': 'bhdleonmobile://',
+    'banreservas': 'banreservas://',
+    'lanacional': 'banreservas://' // La Nacional usa app Banreservas
+  };
+
+  let webs = {
+    'popular': 'https://www.popularenlinea.com',
+    'bhd': 'https://www.bhdleon.com.do',
+    'banreservas': 'https://www.banreservas.com',
+    'lanacional': 'https://www.banreservas.com'
+  };
+
+  window.location = apps[banco];
+  setTimeout(function() {
+    window.location = webs[banco];
+  }, 1200);
+}
+</script>
   };
 
   window.location.href = links[banco];
