@@ -180,16 +180,9 @@ function abrirApp(banco) {
     'lanacional': 'banreservas://'
   };
 
-  // Truco iframe para iPhone/Android
-  let iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = links[banco];
-  document.body.appendChild(iframe);
-
-  setTimeout(() => {
-    document.body.removeChild(iframe);
-  }, 1000);
-} //
+  // Solo intenta abrir la app. Punto.
+  window.location = links[banco];
+}
   
 </script>
 </body>
