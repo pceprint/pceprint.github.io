@@ -46,24 +46,35 @@
     line-height: 1.6;
   }
   .btn {
-    background: white;
-    color: black;
-    border: none;
-    border-radius: 8px;
-    padding: 5px 7px;
-    margin: 0; 
-    display: block
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    width: fit-content;
-    min-width: 0;
-    margin-left: auto:
-    flex-shrink: 0;
-    transition: 0.2s;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 7px;
+  margin: 0;
+  display: block;
+  align-items: center;
+  gap: 0px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  width: fit-content;
+  min-width: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: 0.2s;
 }
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  font-size: 12px;
+  padding: 7px 7px;
+  margin-top: 6px;
+  width: 100%;
+}
+}
+  
   .tipo-cuenta {
     font-size: 15px;
     color: #0833A2;
@@ -138,7 +149,8 @@
 
  <div class="banco">
   <img src="bhd.png" alt="BHD">
-<a onclick="abrirApp('bhd', '29999070016')" class="btn">Copiar cuenta</a>
+<button class="btn" onclick="copiarCuenta('29999070016')">Copiar cuenta</button>
+<a onclick="abrirApp('bhd')" class="btn btn-secondary">Ir a BHD ↗️</a>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -156,20 +168,26 @@
 </div>
 
 <script>
-function abrirApp(banco, cuenta) {
-  // 1. Copia la cuenta
+function copiarCuenta(cuenta) {
   navigator.clipboard.writeText(cuenta);
+  alert('Cuenta copiada ✅');
+}
+
+function abrirApp(banco) {
+  let links = {
+    'banreservas': 'banreservas://',
+    'bhd': 'bhdleon://',
+    'lanacional': 'banreservas://'
+  };
   
-  // 2. Abre la app directo con iframe trick
-  let iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
+  window.location = links[banco];
   
-  if(banco == 'banreservas') iframe.src = 'banreservas://';
-  if(banco == 'bhd') iframe.src = 'bhdleon://';
-  if(banco == 'lanacional') iframe.src = 'banreservas://';
-  
-  document.body.appendChild(iframe);
-  setTimeout(() => document.body.removeChild(iframe), 1000);
+  setTimeout(() => {
+    if(banco == 'banreservas' || banco == 'lanacional') 
+      window.location = 'https://www.banreservas.com';
+    if(banco == 'bhd') 
+      window.location = 'https://www.bhdleon.com.do';
+  }, 1500);
 }
 </script>
 </body>
