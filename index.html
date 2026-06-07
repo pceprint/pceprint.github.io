@@ -138,7 +138,7 @@
 
  <div class="banco">
   <img src="bhd.png" alt="BHD">
-<a href="bhdleon://" onclick="copiarCuenta('29999070016')" class="btn">Copiar cuenta</a>
+<a onclick="abrirApp('bhd', '29999070016')" class="btn">Copiar cuenta</a>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -156,20 +156,20 @@
 </div>
 
 <script>
-function copiarCuenta(cuenta) {
-  // Copia al portapeles
+function abrirApp(banco, cuenta) {
+  // 1. Copia la cuenta
   navigator.clipboard.writeText(cuenta);
   
-  // Truco pa' iPhone: crea un input invisible y selecciona
-  let input = document.createElement('input');
-  input.value = cuenta;
-  document.body.appendChild(input);
-  input.select();
-  document.execCommand('copy');
-  document.body.removeChild(input);
+  // 2. Abre la app directo con iframe trick
+  let iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
   
-  // iPhone necesita 0.1 seg pa' copiar antes de abrir app
-  setTimeout(() => {}, 100);
+  if(banco == 'banreservas') iframe.src = 'banreservas://';
+  if(banco == 'bhd') iframe.src = 'bhdleon://';
+  if(banco == 'lanacional') iframe.src = 'banreservas://';
+  
+  document.body.appendChild(iframe);
+  setTimeout(() => document.body.removeChild(iframe), 1000);
 }
 </script>
 </body>
