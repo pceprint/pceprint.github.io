@@ -138,7 +138,7 @@
 
  <div class="banco">
   <img src="bhd.png" alt="BHD">
-  <button class="btn" onclick="abrirApp('bhd', '29999070016')">Copiar cuenta</button>
+<a href="bhdleon://" onclick="copiarCuenta('29999070016')" class="btn">Copiar cuenta</a>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -156,27 +156,20 @@
 </div>
 
 <script>
-function abrirApp(banco, cuenta) {
+function copiarCuenta(cuenta) {
   // Copia al portapeles
   navigator.clipboard.writeText(cuenta);
   
-  // Abre la app del banco
-  let link = '';
-  if(banco == 'banreservas' || banco == 'lanacional') link = 'banreservas://';
-  if(banco == 'bhd') link = 'bhdleon://';
-  if(banco == 'popular') link = 'popular://';
+  // Truco pa' iPhone: crea un input invisible y selecciona
+  let input = document.createElement('input');
+  input.value = cuenta;
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand('copy');
+  document.body.removeChild(input);
   
-  window.location = link;
-  
-  // Si no tiene app, cae a la web en 1.5 seg
-  setTimeout(() => {
-    if(banco == 'banreservas' || banco == 'lanacional') 
-      window.location = 'https://www.banreservas.com';
-    if(banco == 'bhd') 
-      window.location = 'https://www.bhdleon.com.do';
-    if(banco == 'popular') 
-      window.location = 'https://www.popularenlinea.com';
-  }, 1500);
+  // iPhone necesita 0.1 seg pa' copiar antes de abrir app
+  setTimeout(() => {}, 100);
 }
 </script>
 </body>
