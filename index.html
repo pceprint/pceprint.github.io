@@ -188,12 +188,11 @@ document.body.appendChild(toast);
 setTimeout(() => toast.remove(), 2000);
 }
 
-function abrirApp(banco) {
-  let apps = {
-    'popular': 'popular://',
+ let apps = {
+    'popular': 'https://www.popularenlinea.com', // Popular no tiene deep link
     'bhd': 'bhdleonmobile://',
     'banreservas': 'banreservas://',
-    'lanacional': 'lanacional://s
+    'lanacional': 'lanacional://' 
   };
 
   let webs = {
