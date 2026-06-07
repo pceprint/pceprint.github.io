@@ -150,7 +150,7 @@
  <div class="banco">
   <img src="bhd.png" alt="BHD">
 <button class="btn" onclick="copiarCuenta('29999070016')">Copiar cuenta</button>
-<a onclick="abrirApp('bhd')" class="btn btn-secondary">Ir a BHD ↗️</a>
+<button class="btn btn-secondary" onclick="abrirApp('bhd')">Ir a BHD ↗️</button>
 </div>
 
   <p class="tipo-cuenta">Cuentas personales</p>
@@ -172,6 +172,7 @@ function copiarCuenta(cuenta) {
   navigator.clipboard.writeText(cuenta);
   alert('Cuenta copiada ✅');
 }
+
 function abrirApp(banco) {
   let links = {
     'banreservas': 'banreservas://',
@@ -188,7 +189,8 @@ function abrirApp(banco) {
   setTimeout(() => {
     document.body.removeChild(iframe);
   }, 1000);
-}
+} //
+  
 </script>
 </body>
 </html>
